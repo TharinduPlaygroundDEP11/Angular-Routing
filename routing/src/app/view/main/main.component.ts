@@ -11,13 +11,13 @@ import {Router} from "@angular/router";
     </header>
     <nav class="flex list-none justify-center border-b-2 gap-5">
       <li [class]="classList"
-          routerLink="/home"
+          routerLink="home"
           routerLinkActive="bg-orange-500 hover:bg-orange-600">HOME</li>
       <li [class]="classList2"
-          routerLink="/customers"
+          routerLink="customers"
           routerLinkActive="bg-orange-500 hover:bg-orange-600">MANAGE CUSTOMERS</li>
       <li [class]="'p-2 border cursor-pointer hover:bg-slate-200 rounded-lg'"
-          routerLink="/items"
+          routerLink="items"
           routerLinkActive="bg-orange-500 hover:bg-orange-600">MANAGE ITEMS</li>
     </nav>
     <div class="flex justify-center p-2 m-2">

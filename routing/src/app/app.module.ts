@@ -14,6 +14,11 @@ import {authenticationGuard} from "./guard/authentication.guard";
 
 const mainRoutes: Routes = [
   {
+    path: '',
+    redirectTo: '/app/home',
+    pathMatch: 'full'
+  },
+  {
     path: 'home',
     component: DashboardComponent
   },
@@ -24,15 +29,15 @@ const mainRoutes: Routes = [
   {
     path: 'items',
     component: ManageItemsComponent
-  },
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: '/app/home'
   }
 ];
 
 const appRoutes: Routes = [
+  {
+    path: '',
+    redirectTo: '/app',
+    pathMatch: 'full'
+  },
   {
     path: 'login',
     component: LoginComponent
@@ -42,6 +47,10 @@ const appRoutes: Routes = [
     component: MainComponent,
     children: mainRoutes,
     canActivate: [authenticationGuard]
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
   }
 ];
 
