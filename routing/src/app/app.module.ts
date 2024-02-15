@@ -9,6 +9,7 @@ import { ManageItemsComponent } from './view/manage-items/manage-items.component
 import { NotFoundComponent } from './view/not-found/not-found.component';
 import { LoginComponent } from './view/login/login.component';
 import {RouterModule, Routes} from "@angular/router";
+import {FormsModule} from "@angular/forms";
 
 const routes: Routes = [
   {
@@ -22,6 +23,11 @@ const routes: Routes = [
   {
     path: 'items',
     component: ManageItemsComponent
+  },
+  {
+    path: '',
+    pathMatch: 'prefix',
+    redirectTo: 'home'
   }
 ];
 
@@ -37,7 +43,8 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

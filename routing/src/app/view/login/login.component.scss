@@ -1,0 +1,21 @@
+#box {
+  border: 3px solid gray;
+  border-radius: 25px;
+  width: 350px;
+  height: 500px;
+  box-shadow: 5px 5px gray;
+}
+
+input {
+  &.ng-dirty.ng-invalid.ng-touched {
+    @apply border-red-600;
+    @apply shadow-md shadow-red-600;
+  }
+}
+
+  input {
+    &.ng-dirty.ng-valid.ng-touched {
+      @apply border-green-600;
+      @apply shadow-md shadow-green-600;
+  }
+}

@@ -8,9 +8,15 @@ import { Component } from '@angular/core';
       <button class="border border-sky-500 p-2 hover:bg-sky-500 cursor-pointer rounded-md m-2">Logout</button>
     </header>
     <nav class="flex list-none justify-center border-b-2 gap-5">
-      <li [class]="classList">HOME</li>
-      <li [class]="classList2">MANAGE CUSTOMERS</li>
-      <li [class]="'p-2 border cursor-pointer hover:bg-slate-200'">MANAGE ITEMS</li>
+      <li [class]="classList"
+          routerLink="/home"
+          routerLinkActive="bg-orange-500 hover:bg-orange-600">HOME</li>
+      <li [class]="classList2"
+          routerLink="/customers"
+          routerLinkActive="bg-orange-500 hover:bg-orange-600">MANAGE CUSTOMERS</li>
+      <li [class]="'p-2 border cursor-pointer hover:bg-slate-200 rounded-lg'"
+          routerLink="/items"
+          routerLinkActive="bg-orange-500 hover:bg-orange-600">MANAGE ITEMS</li>
     </nav>
     <div class="flex justify-center p-2 m-2">
       <router-outlet />
@@ -19,13 +25,14 @@ import { Component } from '@angular/core';
   styleUrl: './main.component.scss'
 })
 export class MainComponent {
-  classList = ["p-2", "border", "cursor-pointer", "hover:bg-slate-200"];
+  classList = ["p-2", "border", "cursor-pointer", "hover:bg-slate-200", "rounded-lg"];
 
   classList2 = {
     "p-2":true,
     "cursor-pointer":true,
     "border":true,
     "hover:bg-slate-200":true,
-    "hover:bg-amber-200":false
+    "hover:bg-amber-200":false,
+    "rounded-lg":true
   }
 }
