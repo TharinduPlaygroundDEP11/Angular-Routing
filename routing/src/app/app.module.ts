@@ -10,8 +10,9 @@ import { NotFoundComponent } from './view/not-found/not-found.component';
 import { LoginComponent } from './view/login/login.component';
 import {RouterModule, Routes} from "@angular/router";
 import {FormsModule} from "@angular/forms";
+import {authenticationGuard} from "./guard/authentication.guard";
 
-const routes: Routes = [
+const mainRoutes: Routes = [
   {
     path: 'home',
     component: DashboardComponent
@@ -26,10 +27,25 @@ const routes: Routes = [
   },
   {
     path: '',
-    pathMatch: 'prefix',
-    redirectTo: 'home'
+    pathMatch: 'full',
+    redirectTo: '/app/home'
   }
 ];
+
+const appRoutes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'app',
+    component: MainComponent,
+    children: mainRoutes,
+    canActivate: [authenticationGuard]
+  }
+];
+
+
 
 @NgModule({
   declarations: [
@@ -43,7 +59,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(appRoutes),
     FormsModule
   ],
   providers: [],

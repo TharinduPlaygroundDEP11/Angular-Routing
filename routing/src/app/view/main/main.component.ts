@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-main',
   template: `
     <header class="flex justify-between border-b-2">
       <h1 class="text-3xl font-bold p-2 text-blue-950 text-center">Angular Routing</h1>
-      <button class="border border-sky-500 p-2 hover:bg-sky-500 cursor-pointer rounded-md m-2">Logout</button>
+      <button class="border border-sky-500 p-2 hover:bg-sky-500 cursor-pointer rounded-md m-2"
+              (click)="handleClick()">Logout</button>
     </header>
     <nav class="flex list-none justify-center border-b-2 gap-5">
       <li [class]="classList"
@@ -34,5 +36,13 @@ export class MainComponent {
     "hover:bg-slate-200":true,
     "hover:bg-amber-200":false,
     "rounded-lg":true
+  }
+
+  constructor(private routerService: Router) {
+  }
+
+  handleClick() {
+    localStorage.removeItem('user')
+    this.routerService.navigateByUrl('/login');
   }
 }
